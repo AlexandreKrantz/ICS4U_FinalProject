@@ -20,7 +20,6 @@ public class GUI {
 	JButton doneButton = new JButton("Done");
 	JLabel frontLabel = new JLabel("Front");
 	JLabel backLabel = new JLabel("Back");
-	Controller controller;
 	
 	
 	GUI () {
@@ -29,7 +28,6 @@ public class GUI {
 		frame.setVisible(true);
 		frame.setSize(300,300);
 		
-		controller = new CreateController();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run () {
 				new CreateCards();
