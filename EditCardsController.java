@@ -12,7 +12,6 @@ import javax.swing.SwingUtilities;
 public class EditCardsController extends CardsController {
 	private JFileChooser fileInput;
 	private File file;
-	private int index;
 	
 	//private String[] buttonNames = {"Create", "Delete", "Previous", "Next", "Done"};
 	private String[] buttonNames = {"Next", "Done"};

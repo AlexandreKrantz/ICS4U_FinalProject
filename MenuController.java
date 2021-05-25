@@ -53,7 +53,12 @@ public class MenuController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
+			menu.removePanel(frame);
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run () {
+					new StudyCardsController(frame);
+				}
+			});
 		}
 		
 	}

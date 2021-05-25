@@ -65,6 +65,10 @@ public class MainPanel extends Panel {
 		frontTextArea.requestFocus();
 
 	}
+
+	public void focusBack() {
+		backTextArea.requestFocus();
+	}
 	
 	// Prepares text areas
 	public JScrollPane prepInput(JTextArea input, JScrollPane container) {
@@ -80,10 +84,23 @@ public class MainPanel extends Panel {
 			return false;
 		}
 	}
+
+	public void allowInput(boolean b) {
+		frontTextArea.setEditable(b);
+		backTextArea.setEditable(b);
+	}
 	
 	
 	public void showCard(Flashcard card) {
 		frontTextArea.setText(card.getFront());
+		backTextArea.setText(card.getBack());
+	}
+
+	public void showFront(Flashcard card) {
+		frontTextArea.setText(card.getFront());
+	}
+
+	public void showBack(Flashcard card) {
 		backTextArea.setText(card.getBack());
 	}
 	
