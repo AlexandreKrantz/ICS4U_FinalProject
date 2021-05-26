@@ -28,9 +28,11 @@ public abstract class CardsController {
 			index++;
 			currentCard = deck.get(index);
 		} else {
-			currentCard = new Flashcard("", "");
+			endOfDeckAction();
 		}
 	}
+	
+	protected abstract void endOfDeckAction();
 	
 	
 	protected boolean saveCurrentCard() {

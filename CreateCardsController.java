@@ -62,4 +62,8 @@ public class CreateCardsController extends CardsController {
 			});
 		}
 	}
+
+	protected void endOfDeckAction() {
+		currentCard = new Flashcard("", "");
+	}
 }

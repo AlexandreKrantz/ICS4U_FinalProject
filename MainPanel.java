@@ -1,19 +1,24 @@
+import java.awt.Container;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JViewport;
 
 public class MainPanel extends Panel {
 	private JTextArea frontTextArea;
 	private JTextArea backTextArea;
 	private JLabel frontLabel;
 	private JLabel backLabel;
+	private JScrollPane frontScrollPane;
+	private JScrollPane backScrollPane;
 	
 	
 	public MainPanel() {
@@ -21,20 +26,22 @@ public class MainPanel extends Panel {
 		backLabel = new JLabel("Back");
 		frontTextArea = new JTextArea();
 		backTextArea = new JTextArea();
+		frontScrollPane = new JScrollPane();
+		backScrollPane = new JScrollPane();
 		
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS)); // Vertical BoxLayout
 		panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10)); // Border spacing
 		
 		// Front
 		panel.add(frontLabel);
-		panel.add(prepInput(frontTextArea, new JScrollPane()));
+		panel.add(prepInput(frontTextArea, frontScrollPane));
 		
 		// Vertical spacing between front and back
 		panel.add(Box.createRigidArea(new Dimension(0, 10))); 
 		
 		// Back
 		panel.add(backLabel);
-		panel.add(prepInput(backTextArea, new JScrollPane()));
+		panel.add(prepInput(backTextArea, backScrollPane));
 	}
 	
 	public String getFrontText() {
@@ -57,8 +64,6 @@ public class MainPanel extends Panel {
 		// Clear text areas
 		frontTextArea.setText("");
 		backTextArea.setText("");
-		// Focus on frontTextArea
-		frontTextArea.requestFocus();
 	}
 	
 	public void focusFront() {
@@ -68,6 +73,17 @@ public class MainPanel extends Panel {
 
 	public void focusBack() {
 		backTextArea.requestFocus();
+	}
+	
+	public void hideBack() {
+		backLabel.setText("Back (hidden)");
+		backTextArea.setVisible(false);
+
+	}
+	
+	public void showBack() {
+		backLabel.setText("Back");
+		backTextArea.setVisible(true);
 	}
 	
 	// Prepares text areas
@@ -85,9 +101,9 @@ public class MainPanel extends Panel {
 		}
 	}
 
-	public void allowInput(boolean b) {
-		frontTextArea.setEditable(b);
-		backTextArea.setEditable(b);
+	public void disableInput() {
+		frontTextArea.setEditable(false);
+		backTextArea.setEditable(false);
 	}
 	
 	
@@ -95,13 +111,6 @@ public class MainPanel extends Panel {
 		frontTextArea.setText(card.getFront());
 		backTextArea.setText(card.getBack());
 	}
-
-	public void showFront(Flashcard card) {
-		frontTextArea.setText(card.getFront());
-	}
-
-	public void showBack(Flashcard card) {
-		backTextArea.setText(card.getBack());
-	}
+	
 	
 }

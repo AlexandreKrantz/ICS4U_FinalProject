@@ -80,5 +80,9 @@ public class EditCardsController extends CardsController {
 		}	
 	}
 	
+	protected void endOfDeckAction() {
+		currentCard = new Flashcard("", "");
+	}
+	
 	
 }
