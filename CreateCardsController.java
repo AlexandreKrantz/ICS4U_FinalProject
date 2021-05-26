@@ -10,16 +10,24 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
-
+/**
+ * 
+ * @author Alex Krantz
+ * Due date: May 28th
+ * Class description: provides the logic for the user to create a new deck of cards
+ */
 public class CreateCardsController extends CardsController {
+	// initialize parameters for bottomPanel object
 	private String[] buttonNames = {"Next", "Done"};
 	private ActionListener[] buttonListeners =  {new Next(), new Done()};
 	
 	
 	public CreateCardsController(JFrame f) {
 		super(f);
+		// Initializes panel objects
 		main = new MainPanel();
 		bottom = new BottomPanel(buttonNames, buttonListeners);
+		// Add panels to frame
 		main.addPanel(frame);
 		bottom.addPanel(frame);
 	}
@@ -27,10 +35,11 @@ public class CreateCardsController extends CardsController {
 	public class Next implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (main.checkInput()) {
-				// Create new flashcard object and add to deck
+			if (main.checkInput()) { // If user input is valid
+				// Create new flashcard object with input and add to deck
 				deck.add(new Flashcard(main.getFrontText(), main.getBackText()));
 				System.out.println("Deck size = " + deck.size());
+				// Reset input fields
 				main.resetText();
 			}
 		}
@@ -62,7 +71,8 @@ public class CreateCardsController extends CardsController {
 			});
 		}
 	}
-
+	
+	// Abstract parent method has to be implemented but it is not actually used in this class
 	protected void endOfDeckAction() {
 		currentCard = new Flashcard("", "");
 	}

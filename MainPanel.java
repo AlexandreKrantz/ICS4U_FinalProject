@@ -12,6 +12,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JViewport;
 
+/**
+ * 
+ * @author Alex Krantz
+ * Due date: May 28th
+ * Class description: prepares a JPanel containing all the elements required for displaying a flashcard in the GUI and methods for modifying these elements and getting user input.
+ */
 public class MainPanel extends Panel {
 	private JTextArea frontTextArea;
 	private JTextArea backTextArea;
@@ -29,17 +35,18 @@ public class MainPanel extends Panel {
 		frontScrollPane = new JScrollPane();
 		backScrollPane = new JScrollPane();
 		
+		// Panel
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS)); // Vertical BoxLayout
 		panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10)); // Border spacing
 		
-		// Front
+		// Front of card
 		panel.add(frontLabel);
 		panel.add(prepInput(frontTextArea, frontScrollPane));
 		
 		// Vertical spacing between front and back
 		panel.add(Box.createRigidArea(new Dimension(0, 10))); 
 		
-		// Back
+		// Back of card
 		panel.add(backLabel);
 		panel.add(prepInput(backTextArea, backScrollPane));
 	}
@@ -88,11 +95,12 @@ public class MainPanel extends Panel {
 	
 	// Prepares text areas
 	public JScrollPane prepInput(JTextArea input, JScrollPane container) {
-		input.setLineWrap(true);
-		container = new JScrollPane(input);
-		return container;
+		input.setLineWrap(true); //input wraps to a new line
+		container = new JScrollPane(input); // Enables user can scroll if input exceeds TextArea size
+		return container; 
 	}
 	
+	// Returns true if the input for the front and back is not empty.
 	public boolean checkInput() {
 		if ((frontTextArea.getText().length() != 0) & (backTextArea.getText().length() != 0)) {
 			return true;
@@ -100,13 +108,14 @@ public class MainPanel extends Panel {
 			return false;
 		}
 	}
-
+	
+	// Restricts user from modifying text areas
 	public void disableInput() {
 		frontTextArea.setEditable(false);
 		backTextArea.setEditable(false);
 	}
 	
-	
+	// Gets front and back strings from flashCard object and displays them in TextAreas
 	public void showCard(Flashcard card) {
 		frontTextArea.setText(card.getFront());
 		backTextArea.setText(card.getBack());

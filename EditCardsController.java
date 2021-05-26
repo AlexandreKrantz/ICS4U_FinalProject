@@ -9,6 +9,12 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+/**
+ * 
+ * @author Alex Krantz
+ * Due date: May 28th
+ * Class description: provides the logic for the user to edit a deck of cards stored as a local file
+ */
 public class EditCardsController extends CardsController {
 	private JFileChooser fileInput;
 	private File file;
@@ -47,10 +53,10 @@ public class EditCardsController extends CardsController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if (saveCurrentCard())  {
-				incrementCurrentCard();
+			if (saveCurrentCard())  { //saveCurrentCard only returns true if user input is valid
+				incrementCurrentCard(); // updates currentCard
 				main.showCard(currentCard);
-				main.focusFront();
+				main.focusFront(); // focus on front TextArea
 			}
 		}
 	}
@@ -80,6 +86,7 @@ public class EditCardsController extends CardsController {
 		}	
 	}
 	
+	// If end of deck is reached, create a new empty flashcard object
 	protected void endOfDeckAction() {
 		currentCard = new Flashcard("", "");
 	}
