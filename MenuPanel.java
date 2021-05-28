@@ -16,7 +16,12 @@ import javax.swing.JPanel;
  */
 public class MenuPanel extends Panel {
 	JButton[] buttons;
-
+	
+	/**
+	 * Creates a function menu JPanel
+	 * @param buttonNames names of the buttons
+	 * @param listeners actionlisteners to be added to buttons
+	 */
 	public MenuPanel(String[] buttonNames, ActionListener[] listeners) {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS)); // Vertical BoxLayout (sub components will be vertically stacked)
 		panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10)); // Border spacing

@@ -31,7 +31,11 @@ public class StudyCardsController extends CardsController {
 	private ArrayList<Flashcard> highPriority = new ArrayList<Flashcard>();
 	private ArrayList<Flashcard> mediumPriority = new ArrayList<Flashcard>();
 	private ArrayList<Flashcard> lowPriority = new ArrayList<Flashcard>();
-		
+	
+	/**
+	 * Updates GUI for studying flashcards
+	 * @param f frame that panel will be added to
+	 */
 	public StudyCardsController(JFrame f) {
 		super(f);
 		
@@ -70,6 +74,9 @@ public class StudyCardsController extends CardsController {
 	
 	// When user clicks "show back" button
 	class showBack implements ActionListener {
+		/**
+		 * shows the back of the current card being studied
+		 */
 		public void actionPerformed(ActionEvent e) {
 			main.showBack();
 			// switch the bottom panels so that the user can input whether they answered correctly or incorrectly
@@ -81,6 +88,9 @@ public class StudyCardsController extends CardsController {
 	
 	// When user clicks "incorrect" button
 	class Incorrect implements ActionListener {
+		/**
+		 * increases the priority of the current flashcard then shows the front of a new flashcard
+		 */
 		public void actionPerformed(ActionEvent e) {
 			currentCard.increasePriority(); // increase card priority
 			deck.remove(0); // removes currentCard from the deck that is currently being reviewed
@@ -99,7 +109,9 @@ public class StudyCardsController extends CardsController {
 	
 	// When the user clicks the "correct" button
 	class Correct implements ActionListener {
-		// same function as incorrect class except it decreases card priority
+		/**
+		 *  same function as incorrect class except it decreases card priority
+		 */
 		public void actionPerformed(ActionEvent e) {
 			currentCard.decreasePriority();
 			deck.remove(0);
@@ -115,6 +127,9 @@ public class StudyCardsController extends CardsController {
 	}
 	
 	class Done implements ActionListener {
+		/**
+		 * Saves the users progress in the file and returns GUI to menu
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// Adds all the cards from each of the priority array lists to one array list
 			ArrayList<Flashcard> temp = new ArrayList<Flashcard>();
@@ -146,7 +161,9 @@ public class StudyCardsController extends CardsController {
 		}
 	}
 	
-	// when the end of the deck is reached, set currentCards as the first card of the next highest priority deck
+	/**
+	 * when the end of the deck is reached, set currentCards as the first card of the next highest priority deck
+	 */
 	protected void endOfDeckAction() {
 		index = 0;
 		deck = getHighestPriorityDeck();
@@ -154,7 +171,10 @@ public class StudyCardsController extends CardsController {
 	}
 	
 	
-	// returns the highest priority deck that isn't empty
+	/**
+	 * returns the highest priority deck that isn't empty
+	 * @return deck of flashcards
+	 */
 	protected ArrayList<Flashcard> getHighestPriorityDeck() {
 		if (highPriority.size() != 0) {
 			return highPriority;
@@ -165,7 +185,10 @@ public class StudyCardsController extends CardsController {
 		}
 	}
 	
-	// assigns flashcard to priority deck corresponding to its priority number attribute
+	/**
+	 *  assigns flashcard to priority deck corresponding to its priority number attribute
+	 * @param card to be added to deck.
+	 */
 	protected void assignPriorityDeck(Flashcard card) {
 		if (card.getPriority() == 2) {
 			highPriority.add(card);

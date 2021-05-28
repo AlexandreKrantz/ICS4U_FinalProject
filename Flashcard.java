@@ -10,12 +10,19 @@ public class Flashcard {
 	private String back;
 	private int priority;
 	
-	Flashcard(String frontInput, String backInput) {
+	/**
+	 * Inializes flashcard variables
+	 * @param frontInput text for the front of the flashcard
+	 * @param backInput text for the back of the flashcard
+	 */
+	public Flashcard(String frontInput, String backInput) {
 		front = frontInput;
 		back = backInput;
 		// High priority by default; 0 is low priority
 		priority = 2;
 	}
+	
+	// Getters and setters
 	
 	public String getFront() {
 		return front;
@@ -37,7 +44,10 @@ public class Flashcard {
 		return priority;
 	}
 	
-	//Priority must stay between 0 and 2
+	/**
+	 * Priority must stay between 0 and 2
+	 * @param num
+	 */
 	public void setPriority(int num) {
 		if (0 <= num & num <= 2) {
 			priority = num;

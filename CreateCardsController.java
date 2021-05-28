@@ -21,7 +21,10 @@ public class CreateCardsController extends CardsController {
 	private String[] buttonNames = {"Next", "Done"};
 	private ActionListener[] buttonListeners =  {new Next(), new Done()};
 	
-	
+	/**
+	 * Constructor initializes feature for creating cards
+	 * @param f
+	 */
 	public CreateCardsController(JFrame f) {
 		super(f);
 		// Initializes panel objects
@@ -34,6 +37,9 @@ public class CreateCardsController extends CardsController {
 	
 	public class Next implements ActionListener {
 		@Override
+		/**
+		 * Save user input as new flashcard in the deck and refresh GUI
+		 */
 		public void actionPerformed(ActionEvent e) {
 			if (main.checkInput()) { // If user input is valid
 				// Create new flashcard object with input and add to deck
@@ -47,6 +53,9 @@ public class CreateCardsController extends CardsController {
 	
 	public class Done implements ActionListener {
 		@Override
+		/**
+		 * Save current card in the deck. Save the deck. Return to the menu.
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// Save current card
 			deck.add(new Flashcard(main.getFrontText(), main.getBackText()));
@@ -72,7 +81,9 @@ public class CreateCardsController extends CardsController {
 		}
 	}
 	
-	// Abstract parent method has to be implemented but it is not actually used in this class
+	/**
+	 * Abstract parent method has to be implemented but it is not actually used in this class
+	 */
 	protected void endOfDeckAction() {
 		currentCard = new Flashcard("", "");
 	}

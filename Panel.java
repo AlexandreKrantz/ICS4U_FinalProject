@@ -21,6 +21,10 @@ public abstract class Panel {
 		
 	}
 	
+	/**
+	 * adds panel to frame
+	 * @param frame
+	 */
 	public void addPanel (JFrame frame) {
 		// Add panel to center of frame by default
 		frame.add(panel, BorderLayout.CENTER);
@@ -29,6 +33,10 @@ public abstract class Panel {
 		frame.revalidate();
 	}
 	
+	/**
+	 * removes panel from frame
+	 * @param frame
+	 */
 	public void removePanel(JFrame frame) {
 		frame.remove(panel);
 	}

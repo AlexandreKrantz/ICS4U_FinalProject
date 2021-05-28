@@ -18,14 +18,19 @@ public abstract class CardsController {
 	protected Flashcard currentCard;
 	protected int index; // Index of currentCard
 
-	// Initializes variables
+	/**
+	 * Initializes variables
+	 * @param f
+	 */
 	public CardsController(JFrame f) {
 		deck = new ArrayList<Flashcard>();
 		frame = f;
 		index = 0; // index of currentCard is zero by default
 	}
 	
-	// Get next card in deck if available
+	/**
+	 * Get next card in deck if available
+	 */
 	protected void incrementCurrentCard() {
 		index++;
 		if (index < deck.size()) {
@@ -39,7 +44,10 @@ public abstract class CardsController {
 	
 	protected abstract void endOfDeckAction();
 	
-	
+	/**
+	 * Attempts to save currentCard flashcard object to deck
+	 * @return boolean indicating whether or not save was successful
+	 */
 	protected boolean saveCurrentCard() {
 		// If currentCard object is in the deck and input is valid
 		if (main.checkInput() && index < deck.size() && currentCard.equals(deck.get(index))) {

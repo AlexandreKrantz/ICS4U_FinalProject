@@ -26,7 +26,9 @@ public class MainPanel extends Panel {
 	private JScrollPane frontScrollPane;
 	private JScrollPane backScrollPane;
 	
-	
+	/**
+	 * Creates main panel and adds child elements
+	 */
 	public MainPanel() {
 		frontLabel = new JLabel("Front");
 		backLabel = new JLabel("Back");

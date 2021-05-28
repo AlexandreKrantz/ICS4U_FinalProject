@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-// Alex Krantz, due date, description
 /**
  * 
  * @author Alex Krantz
@@ -49,6 +48,7 @@ public class BottomPanel extends Panel {
 	
 	/**
 	 *  Overrides parent addPanel method
+	 *  @param frame
 	 */
 	public void addPanel (JFrame frame) {
 		frame.add(panel, BorderLayout.PAGE_END); // Add panel to bottom rather than center

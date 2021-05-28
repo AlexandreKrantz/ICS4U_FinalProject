@@ -19,11 +19,13 @@ public class EditCardsController extends CardsController {
 	private JFileChooser fileInput;
 	private File file;
 	
-	//private String[] buttonNames = {"Create", "Delete", "Previous", "Next", "Done"};
 	private String[] buttonNames = {"Next", "Done"};
 	private ActionListener[] buttonListeners = {new Next(), new Done()};
 	
-		
+	/**
+	 * Updates GUI for edit cards feature	
+	 * @param f
+	 */
 	public EditCardsController(JFrame f) {
 		super(f);
 		
@@ -48,9 +50,12 @@ public class EditCardsController extends CardsController {
 		main.showCard(currentCard);
 	}
 	
+	
 	public class Next implements ActionListener {
 
-		@Override
+		/**
+		 * Saves card if input is valid then shows the next card in the deck.
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if (saveCurrentCard())  { //saveCurrentCard only returns true if user input is valid
@@ -63,7 +68,9 @@ public class EditCardsController extends CardsController {
 	
 	public class Done implements ActionListener {
 
-		@Override
+		/**
+		 * Saves the edited deck of card and loads the menu.
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if (saveCurrentCard()) {
@@ -86,7 +93,9 @@ public class EditCardsController extends CardsController {
 		}	
 	}
 	
-	// If end of deck is reached, create a new empty flashcard object
+	/**
+	 * If end of deck is reached, create a new empty flashcard object
+	 */
 	protected void endOfDeckAction() {
 		currentCard = new Flashcard("", "");
 	}

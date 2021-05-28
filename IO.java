@@ -14,7 +14,12 @@ import java.util.ArrayList;
  */
 public class IO {
 	
-	// This method loads an ArrayList of flashcards from a local text file
+	/**
+	 * This method loads an ArrayList of flashcards from a local text file
+	 * @param file to be loaded
+	 * @return deck of flashcards
+	 * @throws IOException if file cannot be accessed.
+	 */
 	public static ArrayList<Flashcard> loadDeck(File file) throws IOException{
 		ArrayList<Flashcard> deck = new ArrayList<Flashcard>();
 		FileReader fr = null;
@@ -56,7 +61,12 @@ public class IO {
 		return deck;
 	}
 	
-	// Save ArrayList of Flashcard objects to a local file
+	/**
+	 * Save ArrayList of Flashcard objects to a local file
+	 * @param deck of flashcards
+	 * @param file where deck will be saved
+	 * @throws IOException if file cannot be accessed or created.
+	 */
 	public static void saveDeck (ArrayList<Flashcard> deck, File file) throws IOException {
 		FileWriter fw = null;
 		PrintWriter pw = null;
